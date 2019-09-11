@@ -19,10 +19,10 @@ module.exports = {
       const dbInstance = req.app.get('db');
       const { id } = req.params;
         
-      dbInstance.read_product()
+      dbInstance.read_product(id)
       .then( product => res.status(200).send( product ) )
       .catch( err => {
-        res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
+        res.status(500).send({errorMessage: "Oops! Something went wrong."});
         console.log(err)
       } );
     },
@@ -54,7 +54,7 @@ module.exports = {
       const dbInstance = req.app.get('db');
       const { id } = req.params;
 
-      dbInstance.delete_product()
+      dbInstance.delete_product(id)
       .then( () => res.sendStatus(200) )
       .catch( err => {
         res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
